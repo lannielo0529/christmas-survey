@@ -552,7 +552,7 @@
       <!-- Section 3: Destination Vote -->
       <div class="section">
         <div class="section-title"><span class="icon">🗺️</span>目的地投票（可複選）</div>
-        <div class="section-desc">以下四個地點請選出您願意前往的選項（可複選），我們將根據票數決定最終地點。</div>
+        <div class="section-desc">以下三個地點請選出您願意前往的選項（可複選），我們將根據票數決定最終地點。</div>
 
         <div class="dest-grid">
           <label class="dest-card">
@@ -576,9 +576,9 @@
           </label>
           <label class="dest-card">
             <input type="checkbox" name="destination" value="tainan">
-            <span class="dest-emoji">🍜</span>
+            <span class="dest-emoji">🏯</span>
             <div class="dest-name">台南</div>
-            <div class="dest-hint">古都美食，文青小巷</div>
+            <div class="dest-hint">古都文化，小吃天堂</div>
           </label>
         </div>
       </div>
@@ -666,7 +666,7 @@
         <!-- Good Gift -->
         <div class="gift-block" data-label="好禮物">
           <div class="section-desc" style="margin-bottom:14px">
-            每位大人各準備一份好禮物，<strong>預算上限 1000 元</strong>。<br>
+            每位大人各準備一份好禮物，<strong>預算上限 1500 元</strong>。<br>
             請為每份禮物放上<strong>商品連結</strong>，並用注音符號拼出禮物的線索——取每個字的聲母或韻母串在一起。<br>
             例如「大耳狗水壺」→ <strong>ㄉㄦㄍㄕㄏ</strong>。之後會抽出送禮人，讓送禮人負責準備該禮物送給禮物主人。
           </div>
@@ -705,6 +705,10 @@
                 <input type="checkbox" name="kidGiftJoin" value="yes" id="kidGiftCheck" onchange="toggleChildKeywords(this)">
                 <span class="opt-label">🎅 要！我要參加抽聖誕老人（準備小孩禮物）</span>
               </label>
+              <label class="opt-item">
+                <input type="checkbox" name="kidGiftJoinLater" value="yes" id="kidGiftLaterCheck">
+                <span class="opt-label">⏰ 還沒決定，10/1 前再確認</span>
+              </label>
             </div>
           </div>
         </div>
@@ -718,6 +722,10 @@
             有報名兒童的家長，請提供<strong>三個形容詞</strong>，讓聖誕老人依據這些方向準備禮物（例：愛戶外、喜歡恐龍、文靜）
           </div>
           <div id="childKeywordsArea"></div>
+          <label class="opt-item" style="margin-top:14px">
+            <input type="checkbox" name="childKeywordsLater" id="childKeywordsLaterCheck">
+            <span class="opt-label" style="font-size:13px">⏰ 還沒想好，10/1 前再填寫形容詞</span>
+          </label>
         </div>
       </div>
 
@@ -1079,8 +1087,10 @@
     });
 
     // Checkboxes that may be unchecked (not in FormData when unchecked)
-    data.giftLinkLater = !!document.getElementById('giftLinkLater').checked;
-    data.kidGiftJoin   = !!document.getElementById('kidGiftCheck').checked;
+    data.giftLinkLater      = !!document.getElementById('giftLinkLater').checked;
+    data.kidGiftJoin        = !!document.getElementById('kidGiftCheck').checked;
+    data.kidGiftJoinLater   = !!document.getElementById('kidGiftLaterCheck').checked;
+    data.childKeywordsLater = !!document.getElementById('childKeywordsLaterCheck').checked;
 
     // Show loading state
     const btn = document.querySelector('.btn-submit');
